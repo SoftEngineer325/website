@@ -44,4 +44,6 @@
 .border-nav {
     border-style: solid;
     border-radius: 25px;
+    margin-left:30px;
+    margin-right:30px;
 }
