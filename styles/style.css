@@ -40,3 +40,8 @@
     padding-left: 5%; 
     padding-right: 5%;
 }
+
+.border-nav {
+    border-style: solid;
+    border-radius: 25px;
+}
