@@ -4,7 +4,7 @@ window.onload = function () {
     //load dropdown menu items for majors
     var courses = ["COSC", "CIS", "ITEC", "SCIA"];
     var dropdown = document.getElementById('courses');
-      
+
     //Loop through array and append it to the drop down menu
     courses.forEach(function(object) {
         var option = document.createElement('option');
@@ -18,7 +18,7 @@ window.onload = function () {
     //load dropdown menu items for majors
     var student_types = ["Residental", "Commuter & Edgewood"];
     var dropdown_student_type = document.getElementById('studenttype');
-      
+
     //Loop through array and append it to the drop down menu
     student_types.forEach(function(object) {
       var option = document.createElement('option');
@@ -192,9 +192,9 @@ $(document).ready(function(){
           return lines.length < maxRows;
       }
       //Should check for backspace/del/etc.
-      else{ 
+      else{
           var caret = textArea.get(0).selectionStart;
-          
+
           var line = 0;
           var charCount = 0;
           $.each(lines, function(i,e){
@@ -206,7 +206,7 @@ $(document).ready(function(){
               //\n count for 1 char;
               charCount += 1;
           });
-                
+
           var theLine = lines[line];
           return theLine.length < maxChars;
       }
