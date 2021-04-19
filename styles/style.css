@@ -30,6 +30,10 @@
     margin: auto;
 }
 
+.banner {
+    width: 100%;
+}
+
 .border-head, .border-p {
     border-radius: 25px;
 }
@@ -63,4 +67,68 @@
     margin-right: 2%; 
     padding-left: 2%; 
     padding-right: 2%;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* button */
+::-webkit-scrollbar-button {
+    background: #222; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #333; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #666; 
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #000; 
+}
+
+/* The track NOT covered by the handle.
+::-webkit-scrollbar-track-piece {
+    background: #000; 
+}
+
+/* Corner */
+::-webkit-scrollbar-corner {
+    background: #999; 
+}
+
+/* Resizer */
+::-webkit-resizer {
+    background: #111; 
+}
+
+.notes {
+    background-attachment: local;
+    background-image:
+        linear-gradient(to right, white 10px, transparent 10px),
+        linear-gradient(to left, white 10px, transparent 10px),
+        repeating-linear-gradient(white, white 30px, #ccc 30px, #ccc 31px, white 31px);
+    line-height: 31px;
+    padding: 8px 10px;
+}
+
+.btn-custom {
+    background-color: #c00030;
+    border-color: #c00030;
+    color: white;
+}
+.btn-custom:hover {
+    background-color: #af022d;
+    color: white;
+}
+
+.custom-control-label::before {
+    background-color: darkorange;
 }
