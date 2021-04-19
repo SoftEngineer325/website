@@ -1,6 +1,15 @@
 .hover:hover {
     opacity: 0.5;
-  }
+}
+
+.table-responsive {
+    display: table;
+}
+
+.card{
+    transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+    cursor: pointer;
+}
 
 .card:hover{
     transform: scale(1.05);
@@ -31,17 +40,17 @@
 
 .border-head {
     border-style: solid;
-    margin-left: 10%;
-    margin-right: 10%;
-    padding-left: 10%;
+    margin-left: 10%; 
+    margin-right: 10%; 
+    padding-left: 10%; 
     padding-right: 10%;
 }
 
 .border-p {
     border-style: solid;
-    margin-left: 5%;
-    margin-right: 5%;
-    padding-left: 5%;
+    margin-left: 5%; 
+    margin-right: 5%; 
+    padding-left: 5%; 
     padding-right: 5%;
 }
 
@@ -54,9 +63,9 @@
 
 .border-rec {
     border-style: solid;
-    margin-left: 2%;
-    margin-right: 2%;
-    padding-left: 2%;
+    margin-left: 2%; 
+    margin-right: 2%; 
+    padding-left: 2%; 
     padding-right: 2%;
 }
 
@@ -67,37 +76,37 @@
 
 /* button */
 ::-webkit-scrollbar-button {
-    background: #222;
+    background: #222; 
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #333;
+    background: #333; 
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #666;
+    background: #666; 
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background: #000;
+    background: #000; 
 }
 
 /* The track NOT covered by the handle.
 ::-webkit-scrollbar-track-piece {
-    background: #000;
+    background: #000; 
 }
 
 /* Corner */
 ::-webkit-scrollbar-corner {
-    background: #999;
+    background: #999; 
 }
 
 /* Resizer */
 ::-webkit-resizer {
-    background: #111;
+    background: #111; 
 }
 
 .notes {
