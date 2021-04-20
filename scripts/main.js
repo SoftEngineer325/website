@@ -16,7 +16,7 @@ window.onload = function () {
   if (location.pathname == "/pages/moneymanagement.html") {
 
     //load dropdown menu items for majors
-    var student_types = ["Residental", "Commuter & Edgewood"];
+    var student_types = ["Residental", "Commuter and Edgewood"];
     var dropdown_student_type = document.getElementById('studenttype');
       
     //Loop through array and append it to the drop down menu

@@ -158,7 +158,7 @@ function get_books($conn) {
 }
 
 function get_meal_plans($conn) {
-	$sql = "SELECT * WHERE student_type LIKE '%".$_GET["plan"]."%'";
+	$sql = "SELECT * FROM mealplans WHERE student_type = '".$_GET["plan"]."'";
 	$query = mysqli_query($conn, $sql) or die("query.php: get electives for major");
 	
 	$data = array();
