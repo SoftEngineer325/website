@@ -1,11 +1,16 @@
 <html>
     <head>
         <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-        <title>Home</title>
+        <title>Study Places</title>
         
-        <link href="../styles/style.css" rel="stylesheet" type="text/css"/>
-        <!--Bootstrap-->
+        <!--Bootstrap CSS CDN-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+        <!--DataTables CSS CDN-->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+        
+        <!--Main CSS-->
+        <link href="../styles/style.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <section>
@@ -39,8 +44,58 @@
         <img class="center fit banner" src="../images/study.png" alt="BobcatPaw">
       </section>
       <br/>
-        
-        <!--Bootstrap-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+  <!----Leaner Types--> 
+    <section class="border-head shadow-lg" style="margin-left: 2%; margin-right: 2%; padding-left: 2%; padding-right: 2%; background-color:white;">
+      <br/>
+      <div class="dropdown" style="margin-bottom: 25px;">
+        <select id="learnertype" class="btn btn-secondary dropdown-toggle">
+          <option value="" disabled selected>Choose a Learner Type</option>
+        </select>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-auto">
+            <table class="table table-responsive table-bordered table-striped table-hover w-100 d-block d-md-table" id="learning_types">
+              <thead>
+                  <tr>
+                      <td>Learner Type</td>
+		                  <td>Ways to Study</td>
+                  </tr>
+              </thead>
+              </table>
+        </div>
+        </div>
+      <br/>
+
+    </section>
+    <br/>
+    <section class="border-head shadow-lg" style="margin-left: 2%; margin-right: 2%; padding-left: 2%; padding-right: 2%; background-color:white;">
+          <br/>
+          <center><h1 style="border:lightgrey; border-width:5px; border-style:solid; margin-left: 30%; margin-right:30%;">Learner Type Quiz</h1></center> <!-- header with borders around -->
+          <p>
+            <center>
+                  
+                  Find Out Your Learning Type: 
+                  <a href="https://arden.ac.uk/what-type-learner-are-you" target="_blank" rel="noopener noreferrer">Quiz!</a>
+  
+            </center>
+                  </p>
+            
+              <br/>
+              </section>
+              <br/>
+
+    <!--Jquery CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!--Bootstrap CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+  
+    <!--Datatable CDN-->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+
+    <!--Main Javascript-->
+    <script src="../scripts/main.js"></script>
     </body>
 </html>

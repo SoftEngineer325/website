@@ -23,6 +23,9 @@ if (isset($_GET["query"])) {
 		case "meal_plan":
 			$data = get_meal_plans($conn);
 			break;
+		case "get_learner":
+			$data = get_learner_type($conn);
+			break;
 		default:
 			$data = array();
 			break;
@@ -159,7 +162,7 @@ function get_books($conn) {
 
 function get_meal_plans($conn) {
 	$sql = "SELECT * FROM mealplans WHERE student_type = '".$_GET["plan"]."'";
-	$query = mysqli_query($conn, $sql) or die("query.php: get electives for major");
+	$query = mysqli_query($conn, $sql) or die("query.php: get meal plan");
 	
 	$data = array();
 	while($row = mysqli_fetch_array($query)) {  // preparing an array
@@ -169,6 +172,21 @@ function get_meal_plans($conn) {
 		$nestedData[] = $row["description"];
 		$nestedData[] = $row["description"];
 		$nestedData[] = $row["cost"];
+
+		$data[] = $nestedData;
+	}
+	return $data;
+}
+
+function get_learner_type($conn) {
+	$sql = "SELECT * FROM study WHERE learner_type = '".$_GET["type"]."'";
+	$query = mysqli_query($conn, $sql) or die("query.php: get learner type");
+	
+	$data = array();
+	while($row = mysqli_fetch_array($query)) {  // preparing an array
+		$nestedData = array();
+		$nestedData[] = $row["learner_type"];
+		$nestedData[] = $row["ways_to_study"];
 
 		$data[] = $nestedData;
 	}
