@@ -26,6 +26,9 @@ if (isset($_GET["query"])) {
 		case "get_learner":
 			$data = get_learner_type($conn);
 			break;
+		case "get_room_data":
+			$data = get_room_data($conn);
+			break;
 		default:
 			$data = array();
 			break;
@@ -170,7 +173,6 @@ function get_meal_plans($conn) {
 		$nestedData[] = $row["student_type"];
 		$nestedData[] = $row["meal_plan_name"];
 		$nestedData[] = $row["description"];
-		$nestedData[] = $row["description"];
 		$nestedData[] = $row["cost"];
 
 		$data[] = $nestedData;
@@ -187,6 +189,23 @@ function get_learner_type($conn) {
 		$nestedData = array();
 		$nestedData[] = $row["learner_type"];
 		$nestedData[] = $row["ways_to_study"];
+
+		$data[] = $nestedData;
+	}
+	return $data;
+}
+
+function get_room_data($conn) {
+	$sql = "SELECT * FROM room_schedule WHERE room_number = '".$_GET["room"]."'";
+	$query = mysqli_query($conn, $sql) or die("query.php: get room data");
+	
+	$data = array();
+	while($row = mysqli_fetch_array($query)) {  // preparing an array
+		$nestedData = array();
+		$nestedData[] = $row["room_number"];
+		$nestedData[] = $row["day_available"];
+		$nestedData[] = $row["time_available_start"];
+		$nestedData[] = $row["time_available_end"];
 
 		$data[] = $nestedData;
 	}

@@ -58,6 +58,32 @@ window.onload = function () {
   }
 
   if (location.pathname == "/pages/studyplaces.html") {
+
+        var rooms = ["122", "133", "134", "222", "223"];
+        var dropdown_room_number = document.getElementById('room_number');
+
+        //Loop through array and append it to the drop down menu
+        rooms.forEach(function(object) {
+          var option = document.createElement('option');
+          option.innerHTML = '<option value="' + object + '">' + object + '</option>';
+          dropdown_room_number.appendChild(option);
+        });
+
+        $('#room_data_table').DataTable({
+          'processing': true,
+          "ordering": false,
+          'language': {
+            'loadingRecords': 'Attempting to load records...',
+            'processing': 'Loaded records, displaying...',
+            "emptyTable": "Waiting for your input!"
+        },
+          "searching": false,
+          "paging": false,
+          "pagingType": "full_numbers",
+          "lengthMenu": [[4], [4]],
+          //"order": [[ 1, "asc" ]],
+        });
+
         //load dropdown menu items for learning types
         var learning_type = ["Visual learners", "Auditory learners", "Kinesthetic learners", "Reading and writing learners"];
         var dropdown_learning_type = document.getElementById('learnertype');
@@ -87,6 +113,33 @@ window.onload = function () {
 }
 
 //Get meal plans
+$("#room_number").change(function() {
+  //Get what select the user picks
+  var userRequest = $("#room_number").val();
+  console.log(userRequest);
+
+  if (userRequest) {
+      //Destroy the table so we can create a new one
+    $('#room_data_table').DataTable().destroy();
+    $('#room_data_table').DataTable({
+      'processing': true,
+      "ordering": false,
+      'language': {
+        'loadingRecords': 'Attempting to load records...',
+        'processing': 'Loaded records, displaying...',
+        "emptyTable": "Sorry, we couldn't find any meal plans!"
+    },
+      "searching": false,
+      "pagingType": "full_numbers",
+      "lengthMenu": [[5, 10, 15, 20], [5, 10, 15, 20]],
+      //"order": [[ 1, "asc" ]],
+      "ajax": {url:"php/query.php?query=get_room_data&room=" + userRequest, type: "post"}
+    });
+    $('.dataTables_length').addClass('bs-select');
+  }
+});
+
+//Get meal plans
 $("#learnertype").change(function() {
   //Get what select the user picks
   var userRequest = $("#learnertype").val();
@@ -103,6 +156,8 @@ $("#learnertype").change(function() {
         'processing': 'Loaded records, displaying...',
         "emptyTable": "Sorry, we couldn't find any meal plans!"
     },
+      "searching": false,
+      "paging": false,
       "pagingType": "full_numbers",
       "lengthMenu": [[5, 10, 15, 20], [5, 10, 15, 20]],
       //"order": [[ 1, "asc" ]],
