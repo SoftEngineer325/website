@@ -1,58 +1,63 @@
 <html>
-    <head>
-        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
-        <title>Home</title>
-        
-          <!--Bootstrap CSS CDN-->
-          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-  
-          <!--DataTables CSS CDN-->
-          <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
-          
-          <!--Main CSS-->
-          <link href="../styles/style.css" rel="stylesheet" type="text/css"/>
-    </head>
-    <body>
-        <section>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background: white;">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="../">
-                <img src="../images/FSU-Color.png" alt="logo" width="300" height="70" class="d-inline-block align-text-top">
-            </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item">
-                    <a class="nav-link border-nav hover" href="classadvise.html">Class Advice</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active border-nav hover" aria-current="page" href="">Money Management</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link border-nav hover" href="studyplaces.html">Study Places</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-        </section>
 
-        <!--Banner-->
-      <section>
-          <img class="center fit banner" src="../images/meal.png" alt="BobcatPaw">
-      </section>
-     
-      <br/>
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Money Management</title>
 
-    <!--Get User Input and Display Books-->
-    <section class="border-head shadow-lg" style="margin-left: 2%; margin-right: 2%; padding-left: 2%; padding-right: 2%; background-color:white;">
-      <center>
-      <br/>
-      <div class="alert alert-warning" role="alert">
+  <!--Bootstrap CSS CDN-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+  <!--DataTables CSS CDN-->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+
+  <!--Main CSS-->
+  <link href="../styles/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <!--Nav-->
+  <section>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background: white;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../">
+          <img src="../images/FSU-Color.png" alt="logo" width="300" height="70" class="d-inline-block align-text-top">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link border-nav hover" href="classadvise.html">Class Advice</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active border-nav hover" aria-current="page" href="">Money Management</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link border-nav hover" href="studyplaces.html">Study Places</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+  <!--Banner-->
+  <section>
+    <img class="center fit banner" src="../images/meal.png" alt="BobcatPaw">
+  </section>
+
+  <br />
+
+  <!--Get User Input and Display Books-->
+  <section class="border-head shadow-lg" style="margin-left: 2%; margin-right: 2%; padding-left: 2%; padding-right: 2%; background-color:white;">
+    <center>
+      <br />
+      <div class="alert alert-warning" role="alert"> 
         Our book database is currently limited, please check back later if your book is not found!
       </div>
+      <h1 style="border:lightgrey; border-radius: 25px; border-width:5px; border-style:solid; margin-left: 30%; margin-right:30%;">Book Prices</h1>
       <div class="form-check form-check-inline">
         <input class="form-check-input" type="radio" name="isbnRadio" id="isbn10" value="10" checked>
         <label class="form-check-label" for="inlineRadio1">ISBN-10</label>
@@ -61,95 +66,79 @@
         <input class="form-check-input" type="radio" name="isbnRadio" id="isbn13" value="13">
         <label class="form-check-label" for="inlineRadio2">ISBN-13</label>
       </div>
-    </div>
+      </div>
 
-    <div class="form-group">
-      <label for="exampleFormControlTextarea1">Choose and Enter the ISBN for your books</label>
-      <textarea onkeypress="return isNumberKey(event)" id="books" rows="4" cols="13" wrap="HARD" style="resize: none; width: auto; text-align: center;" data-limit-rows="true"  class="form-control justified notes" ></textarea>
-    </div>
-    <br/>
-    <button id="getBooks" type="submit" class="btn btn-custom">Get Books</button>
-    <button id="clearInput" class="btn btn-custom">Clear Input</button>
-    <br/>
-  </center>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Choose and Enter the ISBN for your books</label>
+        <textarea onkeypress="return isNumberKey(event)" id="books" rows="4" cols="13" wrap="HARD" style="resize: none; width: auto; text-align: center;" data-limit-rows="true" class="form-control justified notes"></textarea>
+      </div>
+      <br />
+      <button id="getBooks" type="submit" class="btn btn-custom">Get Books</button>
+      <button id="clearInput" class="btn btn-custom">Clear Input</button>
+      <br />
+    </center>
 
     <!--Books-->
     <hr>
-      <div class="row justify-content-center">
-        <div class="col-auto">
-            <table class="table table-responsive table-bordered table-striped table-hover w-100 d-block d-md-table" id="book_table">
-              <thead>
-                  <tr>
-                      <td>ISBN</td>
-                      <td>Book Title</td>
-                      <td>Price</td>
-                      <td>Company</td>
-                  </tr>
-              </thead>
-              </table>
-        </div>
-        </div>
-      <br/>
-    </section>
-    <br/>
-
-    <!----Meal Plans-->    
-      <section class="border-head shadow-lg" style="margin-left: 2%; margin-right: 2%; padding-left: 2%; padding-right: 2%; background-color:white;">
-      <br/>
-      <div class="dropdown_mealplans" style="margin-bottom: 25px;">
-        <select id="studenttype" class="btn btn-secondary dropdown-toggle">
-          <option value="" disabled selected>Choose a Student Type</option>
-        </select>
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <table class="table table-responsive table-bordered table-striped table-hover w-100 d-block d-md-table" id="book_table">
+          <thead>
+            <tr>
+              <td>ISBN</td>
+              <td>Book Title</td>
+              <td>Price</td>
+              <td>Company</td>
+            </tr>
+          </thead>
+        </table>
       </div>
-      <div class="row justify-content-center">
-        <div class="col-auto">
-            <table class="table table-responsive table-bordered table-striped table-hover w-100 d-block d-md-table" id="meal_plans">
-              <thead>
-                  <tr>
-                      <td>Student Type</td>
-		                  <td>Meal Plan Name</td>
-                      <td>Description</td>
-                      <td>Cost</td>
-                  </tr>
-              </thead>
-              </table>
-        </div>
-        </div>
-      <br/>
-    </section>
-    <br/>
+    </div>
+    <br />
+  </section>
+  <br />
 
-    <!--Jquery CDN-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!----Meal Plans-->
+  <section class="border-head shadow-lg" style="margin-left: 2%; margin-right: 2%; padding-left: 2%; padding-right: 2%; background-color:white;">
+    <br />
+    <center>
+      <h1 style="border:lightgrey; border-radius: 25px; border-width:5px; border-style:solid; margin-left: 30%; margin-right:30%;">Meal Plan Comparison</h1>
+    </center>
+    <div class="dropdown_mealplans" style="margin-bottom: 25px;">
+      <select id="studenttype" class="btn btn-secondary dropdown-toggle">
+        <option value="" disabled selected>Choose a Student Type</option>
+      </select>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <table class="table table-responsive table-bordered table-striped table-hover w-100 d-block d-md-table" id="meal_plans">
+          <thead>
+            <tr>
+              <td>Student Type</td>
+              <td>Meal Plan Name</td>
+              <td>Description</td>
+              <td>Cost</td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+    <br />
+  </section>
+  <br />
 
-    <!--Bootstrap CDN-->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
-  
-    <!--Datatable CDN-->
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+  <!--Jquery CDN-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <!--Main Javascript-->
-    <script src="../scripts/main.js"></script>
+  <!--Bootstrap CDN-->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
 
-    <script>
-    
+  <!--Datatable CDN-->
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 
-        /*
-      $(document).ready(function () {
-        $('textarea[data-limit-rows=true]')
-          .on('keypress', function (event) {
-              var textarea = $(this),
-                  text = textarea.val(),
-                  numberOfLines = (text.match(/\n/g) || []).length + 1,
-                  maxRows = parseInt(textarea.attr('rows'));
+  <!--Main Javascript-->
+  <script src="../scripts/main.js"></script>
+</body>
 
-              if (event.which === 13 && numberOfLines === maxRows ) {
-                return false;
-              }
-          });
-      });
-      */
-    </script>
-      </body>
 </html>

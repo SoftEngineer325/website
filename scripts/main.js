@@ -1,16 +1,48 @@
 window.onload = function () {
   console.info(window.location.pathname);
   if (location.pathname == "/pages/classadvise.html") {
-    //load dropdown menu items for majors
-    var courses = ["COSC", "CIS", "ITEC", "SCIA"];
-    var dropdown = document.getElementById('courses');
-      
-    //Loop through array and append it to the drop down menu
-    courses.forEach(function(object) {
-        var option = document.createElement('option');
-        option.innerHTML = '<option value="' + object + '">' + object + '</option>';
-        dropdown.appendChild(option);
-    });
+
+      //load dropdown menu items for majors
+      var courses = ["COSC", "CIS", "ITEC", "SCIA"];
+      var dropdown = document.getElementById('courses');
+        
+      //Loop through array and append it to the drop down menu
+      courses.forEach(function(object) {
+          var option = document.createElement('option');
+          option.innerHTML = '<option value="' + object + '">' + object + '</option>';
+          dropdown.appendChild(option);
+      });
+
+      //DataTables can query the site for us and fill the table!
+      //professor_table = All Courses
+      $('#professor_table').DataTable({
+        'processing': true,
+        'language': {
+          'loadingRecords': 'Attempting to load records...',
+          'processing': 'Loaded records, displaying...'
+      },
+        "pagingType": "full_numbers",
+        "lengthMenu": [[5, 10, 15, 20], [5, 10, 15, 20]],
+        "order": [[ 1, "asc" ]],
+        "ajax": {url:"php/query.php?query=all_courses", type: "post"}
+      });
+
+      //elective_table = Major Electives
+      $('#elective_table').DataTable({
+        'processing': true,
+        "ordering": false,
+        'language': {
+          'loadingRecords': 'Attempting to load records...',
+          'processing': 'Loaded records, displaying...',
+          "emptyTable": "Please select a major to show best electives!"
+      },
+        "pagingType": "full_numbers",
+        "lengthMenu": [[5, 10, 15, 20], [5, 10, 15, 20]],
+        //"order": [[ 1, "asc" ]],
+      });
+      $('.dataTables_length').addClass('bs-select');
+      //Disable message box displaying when there is an error
+      $.fn.dataTable.ext.errMode = 'none';
   }
 
   if (location.pathname == "/pages/moneymanagement.html") {
@@ -112,95 +144,7 @@ window.onload = function () {
   }
 }
 
-//Get meal plans
-$("#room_number").change(function() {
-  //Get what select the user picks
-  var userRequest = $("#room_number").val();
-  console.log(userRequest);
-
-  if (userRequest) {
-      //Destroy the table so we can create a new one
-    $('#room_data_table').DataTable().destroy();
-    $('#room_data_table').DataTable({
-      'processing': true,
-      "ordering": false,
-      'language': {
-        'loadingRecords': 'Attempting to load records...',
-        'processing': 'Loaded records, displaying...',
-        "emptyTable": "Sorry, we couldn't find any meal plans!"
-    },
-      "searching": false,
-      "pagingType": "full_numbers",
-      "lengthMenu": [[5, 10, 15, 20], [5, 10, 15, 20]],
-      //"order": [[ 1, "asc" ]],
-      "ajax": {url:"php/query.php?query=get_room_data&room=" + userRequest, type: "post"}
-    });
-    $('.dataTables_length').addClass('bs-select');
-  }
-});
-
-//Get meal plans
-$("#learnertype").change(function() {
-  //Get what select the user picks
-  var userRequest = $("#learnertype").val();
-  console.log(userRequest);
-
-  if (userRequest) {
-      //Destroy the table so we can create a new one
-    $('#learning_types').DataTable().destroy();
-    $('#learning_types').DataTable({
-      'processing': true,
-      "ordering": false,
-      'language': {
-        'loadingRecords': 'Attempting to load records...',
-        'processing': 'Loaded records, displaying...',
-        "emptyTable": "Sorry, we couldn't find any meal plans!"
-    },
-      "searching": false,
-      "paging": false,
-      "pagingType": "full_numbers",
-      "lengthMenu": [[5, 10, 15, 20], [5, 10, 15, 20]],
-      //"order": [[ 1, "asc" ]],
-      "ajax": {url:"php/query.php?query=get_learner&type=" + userRequest, type: "post"}
-    });
-    $('.dataTables_length').addClass('bs-select');
-  }
-});
-
-$(document).ready(function() {
-      //DataTables can query the site for us and fill the table!
-      //Table1 = All Courses
-      $('#table1').DataTable({
-        'processing': true,
-        'language': {
-          'loadingRecords': 'Attempting to load records...',
-          'processing': 'Loaded records, displaying...'
-      },
-        "pagingType": "full_numbers",
-        "lengthMenu": [[5, 10, 15, 20], [5, 10, 15, 20]],
-        "order": [[ 1, "asc" ]],
-        "ajax": {url:"php/query.php?query=all_courses", type: "post"}
-      });
-
-      //Table2 = Major Electives
-      $('#table2').DataTable({
-        'processing': true,
-        "ordering": false,
-        'language': {
-          'loadingRecords': 'Attempting to load records...',
-          'processing': 'Loaded records, displaying...',
-          "emptyTable": "Please select a major to show best electives!"
-      },
-        "pagingType": "full_numbers",
-        "lengthMenu": [[5, 10, 15, 20], [5, 10, 15, 20]],
-        //"order": [[ 1, "asc" ]],
-      });
-      $('.dataTables_length').addClass('bs-select');
-      //Disable message box displaying when there is an error
-      $.fn.dataTable.ext.errMode = 'none';
-});
-
-//Get meal plans
+//Update meal plan table when input is changed
 $("#studenttype").change(function() {
   //Get what select the user picks
   var userRequest = $("#studenttype").val();
@@ -234,8 +178,8 @@ $("#courses").change(function() {
 
     if (userRequest) {
         //Destroy the table so we can create a new one
-      $('#table2').DataTable().destroy();
-      $('#table2').DataTable({
+      $('#elective_table').DataTable().destroy();
+      $('#elective_table').DataTable({
         'processing': true,
         "ordering": false,
         'language': {
@@ -255,11 +199,11 @@ $("#courses").change(function() {
 //Display either all professors or the best ones for majors
 $("#change_table").change(function() {
   //Destroy the table so we can create a new one
-  $('#table1').DataTable().destroy();
+  $('#professor_table').DataTable().destroy();
   //Get what select the user picks
   var userRequest = $("#change_table").val();
   //Create a new table with the users request
-  $('#table1').DataTable({
+  $('#professor_table').DataTable({
     'processing': true,
     "pagingType": "full_numbers",
     "lengthMenu": [[5, 10, 15, 20], [5, 10, 15, 20]],
@@ -271,7 +215,70 @@ $("#change_table").change(function() {
   $.fn.dataTable.ext.errMode = 'none';
 });
 
+//Update page when room number is changed
+$("#room_number").change(function() {
+  //Get what select the user picks
+  var userRequest = $("#room_number").val();
+  console.log(userRequest);
 
+  if (userRequest) {
+      //Destroy the table so we can create a new one
+    $('#room_data_table').DataTable().destroy();
+    $('#room_data_table').DataTable({
+      'processing': true,
+      "ordering": false,
+      'language': {
+        'loadingRecords': 'Attempting to load records...',
+        'processing': 'Loaded records, displaying...',
+        "emptyTable": "Sorry, we couldn't find any available times for that room!"
+    },
+      "searching": true,
+      "pagingType": "full_numbers",
+      "lengthMenu": [[5, 10, 15, 20], [5, 10, 15, 20]],
+      //"order": [[ 1, "asc" ]],
+      "ajax": {url:"php/query.php?query=get_room_data&room=" + userRequest, type: "post"}
+    });
+    $('.dataTables_length').addClass('bs-select');
+  }
+});
+
+//Update page when learner type is changed
+$("#learnertype").change(function() {
+  //Get what select the user picks
+  var userRequest = $("#learnertype").val();
+  console.log(userRequest);
+
+  if (userRequest) {
+      //Destroy the table so we can create a new one
+    $('#learning_types').DataTable().destroy();
+    $('#learning_types').DataTable({
+      'processing': true,
+      "ordering": false,
+      'language': {
+        'loadingRecords': 'Attempting to load records...',
+        'processing': 'Loaded records, displaying...',
+        "emptyTable": "Sorry, we couldn't find that learner type!"
+    },
+      "searching": false,
+      "paging": false,
+      "pagingType": "full_numbers",
+      "lengthMenu": [[5, 10, 15, 20], [5, 10, 15, 20]],
+      //"order": [[ 1, "asc" ]],
+      "ajax": {url:"php/query.php?query=get_learner&type=" + userRequest, type: "post"}
+    });
+    $('.dataTables_length').addClass('bs-select');
+  }
+});
+
+
+/**
+ * Money Management ISBN
+ * Functions include
+ *  limiting the text area to only numbers and dashses 
+ *  changing text field lenght to match isbn 10 or 13
+ *  clearing text area
+ *  displaying results from ajax post request
+ */
 var maxChars;
 $("#isbn13").click(function() {
   document.getElementById("clearInput").click();
@@ -330,7 +337,7 @@ function isNumberKey(evt) {
   return true;
 }
 
-//Display Books
+//Update the books table based on inputed books from the user
 $("#getBooks").click(function() {
   var data = document.getElementById("books");
   var books = data.value.replace(/\r\n/g,"\n").split("\n").filter(Boolean);

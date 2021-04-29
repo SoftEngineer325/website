@@ -163,6 +163,9 @@ function get_books($conn) {
 	return $data;
 }
 
+/**
+ * Function that returns meals plans based on campus status
+ */
 function get_meal_plans($conn) {
 	$sql = "SELECT * FROM mealplans WHERE student_type = '".$_GET["plan"]."'";
 	$query = mysqli_query($conn, $sql) or die("query.php: get meal plan");
@@ -180,6 +183,9 @@ function get_meal_plans($conn) {
 	return $data;
 }
 
+/**
+ * Function that returns leanering tips based on what kind of leaner you are
+ */
 function get_learner_type($conn) {
 	$sql = "SELECT * FROM study WHERE learner_type = '".$_GET["type"]."'";
 	$query = mysqli_query($conn, $sql) or die("query.php: get learner type");
@@ -195,6 +201,9 @@ function get_learner_type($conn) {
 	return $data;
 }
 
+/**
+ * Function that returns a room schedules based on a room
+ */
 function get_room_data($conn) {
 	$sql = "SELECT * FROM room_schedule WHERE room_number = '".$_GET["room"]."'";
 	$query = mysqli_query($conn, $sql) or die("query.php: get room data");
